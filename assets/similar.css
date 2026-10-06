@@ -1,0 +1,153 @@
+/* Marshall Goldman — Similar Vehicles (VDP)
+   Two placements, one component:
+     .mg-sim--sold    sold VDP, directly under the header. White band: MG's
+                      studio shots are on white, so the cars stand on the
+                      ground they were photographed on — no tiles, no edges.
+     .mg-sim--bottom  in-stock VDP, after the inquiry section. Dark MG cards
+                      on a light band.
+   Values from marshallgoldman.com: futura-pt / Roboto, red #DD1F2A,
+   page #212121, card #1B1B1B. */
+
+.mg-sim {
+  --mg-red: #dd1f2a;          /* 4.88:1 on #fff */
+  --mg-red-deep: #b5161f;     /* 6.05:1 on #f2f2f2 */
+  --mg-ink: #212121;
+  --mg-muted: #6b6b6b;        /* 5.33:1 on #fff */
+  --mg-card: #1b1b1b;
+  --mg-gap: 20px;
+  --mg-per: 4;
+  --ff-d: futura-pt, Jost, sans-serif;
+  position: relative;
+  font-family: Roboto, sans-serif;
+  text-align: left;
+}
+.mg-sim__inner { max-width: 1400px; margin: 0 auto; padding: 0 15px; }
+
+/* ---------- shared: track ---------- */
+.mg-sim__track {
+  display: grid; grid-auto-flow: column;
+  grid-auto-columns: calc((100% - (var(--mg-per) - 1) * var(--mg-gap)) / var(--mg-per));
+  gap: var(--mg-gap); margin: 0; padding: 0; list-style: none;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  overscroll-behavior-x: contain; scrollbar-width: none;
+}
+.mg-sim__track::-webkit-scrollbar { display: none; }
+.mg-sim__card { scroll-snap-align: start; }
+.mg-sim__link { display: flex; flex-direction: column; height: 100%; text-decoration: none; color: inherit; }
+.mg-sim__link:hover { text-decoration: none; color: inherit; }
+.mg-sim__img { overflow: hidden; background: #fff; }
+.mg-sim__img { aspect-ratio: 3 / 2; }   /* MG's original photo ratio — never cropped */
+.mg-sim__img img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: 50% 50%; transition: transform .5s ease; }
+.mg-sim__link:hover .mg-sim__img img { transform: scale(1.03); }
+.mg-sim__name {
+  margin: 0; font: 450 15px/20px var(--ff-d); letter-spacing: .8px; text-transform: uppercase;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.mg-sim__price { margin: 0; font: 450 18px/24px var(--ff-d); letter-spacing: 1px; }
+.mg-sim__meta { list-style: none; margin: 0; padding: 0; font-size: 14px; }
+
+/* ---------- shared: controls ---------- */
+.mg-sim__nav { display: flex; align-items: center; }
+.mg-sim__count { font: 450 14px/1 var(--ff-d); letter-spacing: 1.5px; color: var(--mg-muted); margin-right: 10px; white-space: nowrap; }
+.mg-sim__count b { font-weight: 500; color: var(--mg-ink); }
+.mg-sim__arrow { width: 40px; height: 40px; padding: 0; border: 0; background: none; color: var(--mg-ink);
+  display: grid; place-items: center; cursor: pointer; transition: color .2s ease, opacity .2s ease; }
+.mg-sim__arrow:hover { color: var(--mg-red); }
+.mg-sim__arrow[disabled] { opacity: .25; cursor: default; }
+.mg-sim__arrow svg { width: 22px; height: 22px; }
+.mg-sim__cta { display: inline-flex; align-items: center; gap: 14px; white-space: nowrap; color: var(--mg-red);
+  font: 500 15px/1 var(--ff-d); letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; }
+.mg-sim__cta:hover { color: var(--mg-red-deep); text-decoration: none; }
+.mg-sim__cta svg { width: 32px; height: 12px; transition: transform .2s ease; }
+.mg-sim__cta:hover svg { transform: translateX(5px); }
+.mg-sim__link:focus-visible, .mg-sim__arrow:focus-visible, .mg-sim__cta:focus-visible { outline: 2px solid var(--mg-red); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-sim__track { scroll-behavior: auto; }
+  .mg-sim__img img, .mg-sim__cta svg, .mg-sim__rail i { transition: none; }
+  .mg-sim__link:hover .mg-sim__img img, .mg-sim__cta:hover svg { transform: none; }
+}
+
+/* =========================================================
+   SOLD — white band under the header
+   ========================================================= */
+.mg-sim--sold { background: #fff; color: var(--mg-ink); padding: 40px 0 40px; --mg-gap: 24px; --mg-per: 5; }
+.mg-sim--sold .mg-sim__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 20px; }
+.mg-sim--sold .mg-sim__kicker { display: block; margin-bottom: 12px; font: 500 16px/18px var(--ff-d); letter-spacing: 1.5px; text-transform: uppercase; color: var(--mg-red); }
+.mg-sim--sold .mg-sim__title { margin: 0; font: 450 30px/36px var(--ff-d); letter-spacing: 1.5px; text-transform: uppercase; }
+.mg-sim--sold .mg-sim__actions { display: flex; align-items: center; gap: 28px; padding-bottom: 2px; }
+.mg-sim--sold .mg-sim__actions .mg-sim__nav { padding-left: 24px; border-left: 1px solid #e3e3e3; }
+/* studio white blends into the band */
+.mg-sim--sold .mg-sim__body { padding-top: 18px; border-top: 1px solid #ececec; margin-top: 4px; }
+.mg-sim--sold .mg-sim__name { -webkit-line-clamp: 1; font-size: 14px; }
+.mg-sim--sold .mg-sim__price { font-size: 17px; }
+.mg-sim--sold .mg-sim__row { display: flex; align-items: baseline; gap: 14px; margin-top: 8px; }
+.mg-sim--sold .mg-sim__meta { color: var(--mg-muted); }
+.mg-sim--sold .mg-sim__meta li:first-child { display: none; }
+.mg-sim--sold .mg-sim__meta span { display: none; }
+.mg-sim--sold .mg-sim__view { display: none; }
+.mg-sim--sold .mg-sim__link:hover .mg-sim__name { color: var(--mg-red); }
+
+/* =========================================================
+   BOTTOM — in-stock VDP, after the inquiry section
+   ========================================================= */
+.mg-sim--bottom { background: #f2f2f2; color: var(--mg-ink); padding: 80px 0 88px; }
+.mg-sim--bottom .mg-sim__head { text-align: center; margin-bottom: 36px; }
+.mg-sim--bottom .mg-sim__kicker { display: block; margin-bottom: 14px; font: 500 20px/20px var(--ff-d); letter-spacing: 1px; text-transform: uppercase; color: var(--mg-red-deep); }
+.mg-sim--bottom .mg-sim__title { margin: 0; font: 450 50px/60px var(--ff-d); letter-spacing: 7.5px; text-transform: uppercase; }
+/* the live SRP card (.car-card), measured on marshallgoldman.com/inventory at 329px */
+.mg-srp { background: #1b1b1b; color: #fff; display: flex; flex-direction: column; padding-bottom: 20px; }
+.mg-srp a { color: inherit; text-decoration: none; }
+.mg-srp__img { display: block; aspect-ratio: 3 / 2; background: #fff; overflow: hidden; }
+.mg-srp__img img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.mg-srp__body { display: flex; flex-direction: column; flex: 1; padding: 24px 10px 0; }
+.mg-srp__title { margin: 0; font: 450 16px/19.2px var(--ff-d); letter-spacing: .8px; text-transform: uppercase; color: #fff;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 38.4px; }
+.mg-srp__price { margin: 0 0 7px; font: 450 16px/30px Poppins, sans-serif; letter-spacing: .8px; text-transform: uppercase; color: #fff; }
+.mg-srp__specs { list-style: none; margin: 0 0 14px; padding: 0; font: 400 15px/30px Roboto, sans-serif; color: #fff; }
+.mg-srp__specs span { display: inline-block; width: 60px; margin-right: 16px; color: #898989; }
+.mg-srp__stock { list-style: none; margin: 0; padding: 0; display: flex; border-top: 1px solid #404040; border-bottom: 1px solid #404040;
+  font: 400 15px/12px Roboto, sans-serif; color: #fff; }
+.mg-srp__stock li { padding: 15px 6px 15px 0; white-space: nowrap; }
+.mg-srp__stock li + li { padding-left: 10px; border-left: 1px solid #404040; }
+.mg-srp__stock span { color: #898989; }
+.mg-srp__btns { display: flex; gap: 8px; margin-top: 22px; }
+.mg-srp__btns a { flex: 1 1 0; min-width: 0; height: 44px; display: flex; align-items: center; justify-content: center; white-space: nowrap;
+  padding: 0 12px; border: 1px solid #fff; border-radius: 100px;
+  font: 450 15px/1 var(--ff-d); letter-spacing: .5px; text-transform: uppercase; color: #fff; transition: background-color .2s ease, border-color .2s ease; }
+.mg-srp__btns a:hover { background: var(--mg-red); border-color: var(--mg-red); color: #fff; }
+.mg-srp__btns .mg-srp__call { flex: 0 0 44px; width: 44px; padding: 0; }
+.mg-srp__call img { width: 20px; height: 20px; transition: filter .2s ease; }
+.mg-srp__btns .mg-srp__call:hover img { filter: brightness(0) invert(1); }
+.mg-sim__foot { display: flex; align-items: center; gap: 32px; margin-top: 28px; }
+.mg-sim__rail { flex: 1; height: 2px; background: #d6d6d6; overflow: hidden; }
+.mg-sim__rail i { display: block; height: 100%; background: var(--mg-red); transition: transform .3s ease; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1199px) { .mg-sim { --mg-per: 3; } .mg-sim--sold { --mg-per: 4; } }
+@media (max-width: 991px) {
+  .mg-sim { --mg-per: 2; }
+  .mg-sim--sold { --mg-per: 3; }
+  .mg-sim--bottom .mg-sim__title { font-size: 36px; line-height: 44px; letter-spacing: 5px; }
+}
+@media (max-width: 767px) {
+  .mg-sim { --mg-per: 1.25; --mg-gap: 14px; }
+  .mg-sim__arrow { display: none; }
+  .mg-sim__count { margin: 0; }
+  .mg-sim__track { margin-right: -15px; padding-right: 15px; }
+
+  .mg-sim--sold { padding: 32px 0 32px; --mg-per: 1.6; }
+  .mg-sim--sold .mg-sim__head { flex-direction: column; align-items: stretch; gap: 18px; margin-bottom: 22px; }
+  .mg-sim--sold .mg-sim__title { font-size: 22px; line-height: 28px; letter-spacing: 1px; }
+  .mg-sim--sold .mg-sim__actions { justify-content: space-between; gap: 16px; }
+  .mg-sim--sold .mg-sim__actions .mg-sim__nav { border: 0; padding: 0; }
+  .mg-sim--sold .mg-sim__cta { font-size: 14px; gap: 10px; }
+  .mg-sim--sold .mg-sim__name { font-size: 14px; }
+  .mg-sim--sold .mg-sim__price { font-size: 16px; }
+
+  .mg-sim--bottom { padding: 56px 0 64px; }
+  .mg-sim--bottom .mg-sim__title { font-size: 28px; line-height: 34px; letter-spacing: 3px; }
+  .mg-sim__foot { gap: 20px; margin-top: 20px; }
+  .mg-srp__btns { gap: 6px; }
+  .mg-srp__btns a { font-size: 14px; letter-spacing: .3px; padding: 0 8px; }
+}
