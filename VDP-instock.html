@@ -8,18 +8,19 @@
 <link rel="stylesheet" href="https://use.typekit.net/teo7bxl.css">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Roboto:wght@300;400;500;700&display=swap">
-<link rel="stylesheet" href="assets/vdp.css?v=160505">
-<link rel="stylesheet" href="assets/similar.css?v=160505">
+<link rel="stylesheet" href="assets/vdp.css?v=121837">
+<link rel="stylesheet" href="assets/similar.css?v=121837">
 </head>
 <body>
 
-<nav class="state" aria-label="Mockup state">
+<nav class="state" aria-label="Mockup pages">
+  <a href="index.html">Home</a>
   <a href="VDP-instock.html" aria-current="page">In stock</a>
   <a href="VDP-sold.html">Sold</a>
 </nav>
 
 <header class="hdr">
-  <nav><span>Inventory</span><span>Explore</span><span>Live<br>Auctions</span><span>Sell/Trade</span></nav>
+  <nav><span>Inventory</span><span>Explore</span><span>Live Auctions</span><span>Sell/Trade</span></nav>
   <img class="logo" src="assets/img/logo.png" alt="Marshall Goldman, Estd. 1978">
   <nav><span>Locations</span><span>Services</span><span>About</span><span class="phone"><img src="assets/img/phone_icon.svg" alt=""><span>216-358-6575</span></span></nav>
 </header>
@@ -100,9 +101,10 @@
       <div><h3>Cleveland</h3><p>24661 Miles Rd<br>Warrensville Heights, OH 44128</p><a href="#"><img src="assets/img/Call.svg" alt="">216-358-6575</a></div>
       <div><h3>Newport Beach</h3><p>2540 West Coast Highway<br>Newport Beach, CA 92663</p><a href="#"><img src="assets/img/Call.svg" alt="">949-627-0003</a></div>
       <div><h3>Baltimore</h3><p>7869 Dorsey Run Rd<br>Jessup, MD 20794</p><a href="#"><img src="assets/img/Call.svg" alt="">443-583-3500</a></div>
+      <div><h3>West Palm Beach</h3><p>4190 Okeechobee Blvd<br>West Palm Beach, FL 33409</p><a href="tel:877-561-2121"><img src="assets/img/Call.svg" alt="">877-561-2121</a></div>
     </div>
     <div class="links">
-      <div><h4>Inventory</h4><ul><li>All Inventory</li><li>Recent Inventory</li><li>Baltimore Inventory</li><li>Beverly Hills Inventory</li><li>Cleveland Inventory</li><li>Newport Beach Inventory</li><li>Sold Inventory</li></ul></div>
+      <div><h4>Inventory</h4><ul><li>All Inventory</li><li>Recent Inventory</li><li>Baltimore Inventory</li><li>Beverly Hills Inventory</li><li>Cleveland Inventory</li><li>Newport Beach Inventory</li><li>West Palm Beach Inventory</li><li>Sold Inventory</li></ul></div>
       <div><h4>Explore</h4><ul><li>Aston Martin</li><li>Bentley</li><li>Ferrari</li><li>McLaren</li><li>Lamborghini</li><li>Rolls Royce</li><li>Porsche</li><li>Mercedes</li></ul></div>
       <div><h4>Sell or Trade</h4><ul><li>Consignment</li><li>Sell or Trade</li></ul></div>
       <div><h4>Finance</h4><ul><li>Finance Center</li><li>Payment Calculator</li><li>CA Finance Application</li></ul></div>
@@ -114,8 +116,8 @@
   </div>
 </footer>
 
-<script src="assets/similar.js?v=160505"></script>
-<script src="assets/similar-data.js?v=160505"></script>
+<script src="assets/similar.js?v=121837"></script>
+<script src="assets/similar-data.js?v=121837"></script>
 <script>
   MGSimilar.mount(document.getElementById('similar-anchor'), { variant: 'bottom', position: 'afterend', kicker: 'More Like This', title: 'Similar Vehicles', cars: MG_MOCK.instock });
   document.querySelectorAll('.mg-sim__link').forEach(function (a) { a.href = 'https://www.marshallgoldman.com' + a.getAttribute('href'); a.target = '_blank'; a.rel = 'noopener'; });
